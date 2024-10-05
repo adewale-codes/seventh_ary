@@ -23,7 +23,7 @@ const PopularWearsCarousel = ({ wears }) => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className='popular-bike-slider mb-8'
+      className='popular-wear-slider mb-8'
     >
       {wears.map((wear) => {
         return (

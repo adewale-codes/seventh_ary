@@ -5,19 +5,19 @@ import Link from 'next/link';
 import PopularWearsCarousel from '@/app/components/PopularWearsCarousel'
 
 const getData = async () => {
-  const query = `*[_type == 'product' && references(*[_type == 'category' && name == 'Popular wears']._id, categories)] {
-        _id,
-          name,
-          description,
-          images,
-          price,
-          price_id,
-          "slug": slug.current,
-          "categories": categories[]-> {
-          name
-          }
-      }
-      `;
+  const query = `*[_type == 'product' && references(*[_type == 'category' && name == 'Popular wears']._id, categories) && defined(slug.current)] {
+    _id,
+    name,
+    description,
+    images,
+    price,
+    price_id,
+    "slug": slug.current,
+    "categories": categories[]-> {
+      name
+    }
+  }`;
+  
   const data = await client.fetch(query);
   return data;
 };
@@ -33,7 +33,7 @@ const PopularWears = async () => {
           The World's Premium Wears In One Destination.
         </p>
         <PopularWearsCarousel wears={popular} />
-        <Link href='/our-bikes'>
+        <Link href='/our-wears'>
           <button className='btn btn-accent mx-auto'>See all wears</button>
         </Link>
       </div>

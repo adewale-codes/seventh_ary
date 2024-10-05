@@ -20,7 +20,7 @@ export default {
     },
     {
       name: 'price_id',
-      title: 'Stripe Product Pride ID',
+      title: 'Stripe Product Price ID',
       type: 'string',
     },
     {
@@ -28,6 +28,14 @@ export default {
       title: 'Product Images',
       type: 'array',
       of: [{type: 'image'}],
+    },
+    {
+      name: 'slug',
+      title: 'Product Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+      },
     },
     {
       name: 'categories',
